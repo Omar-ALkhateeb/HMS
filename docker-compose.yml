@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+  mysqldb:
+    build:
+      context: ./db
+      dockerfile: ./Dockerfile
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: hms
+    ports:
+      - "3366:3306"
+    volumes:
+      - db-config:/etc/mysql
+      - db-data:/var/lib/mysql
+      - ./db/backup/files/:/data_backup/data
+  app:
+    build:
+      context: ./backend
+      dockerfile: ./Dockerfile
+    image: node-mysql-app
+    ports:
+      - "8000:8000"
+    environment:
+      SECRET_KEY: secret
+      PORT: 8000
+      NODE_ENV: production
+      DB_HOST: mysqldb
+      DB_USER: root
+      DB_PASS: pass
+      DB_NAME: hms
+      LANG: ar
+      EMAIL: servicegolang087@gmail.com
+      GMAIL_PASSWORD: 1234566777oo
+    depends_on:
+      - mysqldb
+    stdin_open: true
+    tty: true
+
+volumes:
+  db-config:
+  db-data:
