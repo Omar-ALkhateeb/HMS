@@ -81,7 +81,7 @@
                 ><%= __("Admin Login")%></a
               >
             </li>
-            <li class="nav-item dropdown">
+            <!-- <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
                 href="#"
@@ -98,7 +98,12 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="/lang/en">english</a>
               </div>
-            </li>
+            </li> -->
+            <% if(__("hello")=="arabic"){ %>
+            <li><a href="/lang/en">english</a></li>
+            <% } %> <% if(__("hello")=="english"){ %>
+            <li><a href="/lang/ar">العربية</a></li>
+            <% } %>
           </ul>
         </div>
       </div>

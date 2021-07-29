@@ -63,29 +63,34 @@
                 ><%= user.Fname %> <%= user.Lname %></a
               >
             </li>
-            <li class="nav-item dropdown">
+
+            <!-- <li class="dropdown2">
               <a
-                class="nav-link dropdown-toggle"
                 href="#"
-                id="navbarDropdown"
+                class="dropdown-toggle2"
+                data-toggle="dropdown2"
+                data-parent=".navbar-collapse"
                 role="button"
-                data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
-              >
-                <%= __("Language")%>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/lang/ar">العربية</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="/lang/en">english</a>
-              </div>
-            </li>
+                ><%= __("Language")%> <span class="caret"></span
+              ></a>
+              <ul class="dropdown-menu">
+                <li><a href="/lang/ar">العربية</a></li>
+                <li><a href="/lang/en">Another english</a></li>
+              </ul>
+            </li> -->
             <li>
               <a href="/authenticate/logout" class="smoothScroll"
                 ><%= __("Logout")%></a
               >
             </li>
+
+            <% if(__("hello")=="arabic"){ %>
+            <li><a href="/lang/en">english</a></li>
+            <% } %> <% if(__("hello")=="english"){ %>
+            <li><a href="/lang/ar">العربية</a></li>
+            <% } %>
           </ul>
         </div>
       </div>

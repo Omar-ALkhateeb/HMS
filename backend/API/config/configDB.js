@@ -1,6 +1,6 @@
 // configuring configDB.js for connection
 const dotenv = require('dotenv')
-dotenv.config({ path: './API/config/config.env' })
+dotenv.config()
 
 module.exports = {
     'connection': {
